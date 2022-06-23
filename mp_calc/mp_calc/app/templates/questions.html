@@ -5,13 +5,13 @@
 
 <h1 class="display-1">Hi, {{ user.username }}!</h1>
 
-<h3 class="display-3">Create a Question</h3>
+<h2 class="display-2">Create a Question</h2>
  <div class="row">
         <div class="col-md-4">
             {{ wtf.quick_form(form)}}
         </div>
   </div>
- 
+
 <h3>Your Submitted Questions</h3>
 
 {% if questions %}
@@ -31,7 +31,7 @@
       <td class="lead">{{ questions[idx].answer }}</td>
     </tr>
   {% endfor %}
-  
+
   </tbody>
 </table>
 

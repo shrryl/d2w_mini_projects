@@ -43,12 +43,16 @@
         - [Task 1: Getting Familiar with SocketIO](#task-1-getting-familiar-with-socketio)
         - [Task 2: Handling Click](#task-2-handling-click)
     - [Expected Deliverable](#expected-deliverable)
+    - [References](#references)
 
 <!-- markdown-toc end -->
+
 
 ## Learning Objectives
 By the end of this mini project, you should be able to:
 - write minimax algorithm using recursion
+- create MongoDB Non-SQL database
+- read and write to MongoDB database
 
 ## Setup
 
@@ -62,7 +66,6 @@ You need to have Git to do the project. Download and install the software accord
 Clone the mini project repository from Github. On your terminal or Git Bash, type the following:
 
 ```shell
-$ cd Downloads
 $ git clone https://github.com/kurniawano/d2w_mini_projects.git
 ```
 
@@ -71,7 +74,7 @@ $ git clone https://github.com/kurniawano/d2w_mini_projects.git
 Once you have downloaded the repository, you can go to the repository and to the folder called `mp_tictactoe` for this mini project.
 
 ```shell
-$ cd d2w_mini_projects/mp_tictactoe
+$ cd fip_powerx_mini_projects/mp_tictactoe
 $ ls
 ```
 
@@ -96,12 +99,12 @@ In the following steps, the Windows prompt will be represented by:
 ```
 Go to the root folder `mp_tictactoe`.
 ```shell
-> cd %USERPROFILE%\Downloads\d2w_mini_projects\mp_tictactoe
+> cd %USERPROFILE%\fip_powerx_mini_projects\mp_tictactoe
 ```
 From the root folder, i.e. `mp_tictactoe`, create virtual environment called `virtenv`.
 
 ```shell
-> python -m venv virtenv
+$ python -m venv virtenv
 ```
 
 A folder called `virtenv` will be created. Now, activate the virtual environment.
@@ -129,7 +132,7 @@ $
 
 Go to the root folder `mp_tictactoe`. 
 ```shell
-$ cd ~/Downloads/d2w_mini_projects/mp_tictactoe
+$ cd ~/fip_powerx_mini_projects/mp_tictactoe
 ```
 
 From the root folder, i.e. `mp_tictactoe`, create virtual environment called `virtenv`.
@@ -162,13 +165,13 @@ Install the necessary packages for this mini project. From the root folder, i.e.
 For Windows:
 ```shell
 > python -m pip install --upgrade pip 
-> python -m pip install -U --force-reinstall -r requirements.txt
+> pip install -U --force-reinstall -r requirements.txt
 ```
 
 For MacOS/Linux: (For Linux, you might need to type pip3 instead)
 ```shell
 $ python -m pip install --upgrade pip
-$ python -m pip install -U --force-reinstall -r requirements.txt
+$ pip install -U --force-reinstall -r requirements.txt
 ```
 
 The above steps will update pip and install the following packages:
@@ -269,7 +272,7 @@ In this task, you need to compile the `clientlibrary.py` into a javascript file 
 To compile `clientlibrary.py`, first we need to go into the `static` folder.
 
 ```shell
-> cd %USERPROFILE\Downloads\d2w_mini_projects\mp_tictactoe\app\static
+> cd %USERPROFILE\fip_powerx_mini_projects\mp_tictactoe\app\static
 > dir
 ```
 
@@ -281,7 +284,7 @@ clientlibrary.py
 Run Transcrypt on `clientlibrary.py`:
 
 ```shell
-python -m transcrypt -b -n clientlibrary
+python -m transcrypt -b -m clientlibrary
 ```
 
 The option `-b` means to build the javascript library. You can use `--help` for more options. Once it is done, you should be able to see a folder called `__target__` containing several files. You should see `clientlibrary.js` created inside this folder. 
@@ -291,7 +294,7 @@ The option `-b` means to build the javascript library. You can use `--help` for 
 To compile `library.py`, first we need to go into the `static` folder.
 
 ```shell
-$ cd ~/Downloads/d2w_mini_projects/mp_tictactoe/app/static
+$ cd ~/fip_powerx_mini_projects/mp_tictactoe/app/static
 $ ls
 ```
 
@@ -303,7 +306,7 @@ clientlibrary.py
 Run Transcrypt on `clientlibrary.py`:
 
 ```shell
-python -m transcrypt -b -n clientlibrary
+python -m transcrypt -b clientlibrary.py
 ```
 
 The option `-b` means to build the javascript library. You can use `--help` for more options. Once it is done, you should be able to see a folder called `__target__` containing several files. 
@@ -392,11 +395,11 @@ Now, we are going to create the database using Flask-Migrate tool. First, go to 
 
 Windows:
 ```dos
-> cd %USERPROFILE\Downloads\d2w_mini_projects\mp_tictactoe
+> cd %USERPROFILE\fip_powerx_mini_projects\mp_tictactoe
 ```
 Mac OS:
 ```shell
-$ cd ~/Downloads/d2w_mini_projects/mp_tictactoe
+$ cd ~/fip_powerx_mini_projects/mp_tictactoe
 ```
 
 Then, run the following command from the terminal:
@@ -416,11 +419,11 @@ You can try to run the web application now. First go to the root directory of yo
 
 Windows:
 ```dos
-> cd %USERPROFILE\Downloads\d2w_mini_projects\mp_tictactoe
+> cd %USERPROFILE\fip_powerx_mini_projects\mp_tictactoe
 ```
 Mac OS:
 ```shell
-$ cd ~/Downloads/d2w_mini_projects/mp_tictactoe
+$ cd ~/fip_powerx_mini_projects/mp_tictactoe
 ```
 
 Now you can run Flask.
@@ -465,7 +468,7 @@ To stop the web app type `CTRL+C`.
 
 #### Local Computer
 
-If you are using your own computer, make sure to change the flag `voc=False` in the following line inside `mp_tictactoe/app/__init__.py`.
+If you are using your own computer, make sure to change the flag `voc=False` in the following line inside `mp_sort/app/__init__.py`.
 
 ```python
 # set voc=False if you run on local computer
@@ -663,17 +666,6 @@ Now you should test your `TicTacToe` class.
 1. Scroll down to Exercise 4 test cases and comment out the following line `sys.exit(1)`. 
 1. Run the file under `mp_tictactoe/app` folder by calling `python serverlibrary.py` from the Terminal or Command Prompt.
 
-1. The rest of the code has been written for you. By now, you should be able to play the Tic Tac Toe with the computer. Try to understand the overall code and every part of the project.  Run the webserver to test.
-
-## Expected Deliverable
-
-The expected output can be found in this video below.
-
-[Mini Project 3 Expected Output](https://web.microsoftstream.com/video/6c5a1ca1-66e3-46ab-aeb3-ae250422ed3d)
-
-# Additional Notes
-The following two exercises are meant for you to get familiar with how the whole application works. The solutions have been provided in `routes.py` in the GitHub repository. However, you may want to compare this note and the solution. 
-
 ## Exercise 5
 
 Now our task is to updating the Single Player Page using the State table.
@@ -870,7 +862,7 @@ def handle_click(message):
 
 1. Lastly, we need to update the database. To do that, first you need to create an object instance of `State`. Next you need to add the data and commit it to the database.
     ```python
-    # insert a new document to db on the board's status
+    # insert a new document to MongoDB on the board's status
     # create an object instance of State. Replace the None.
     data = State(user_id=None,
                  time=datetime.now(),
@@ -881,4 +873,18 @@ def handle_click(message):
     # write the code to commit the session to the database
     pass
     ```
+1. The rest of the code has been written for you. By now, you should be able to play the Tic Tac Toe with the computer. Try to understand the overall code and every part of the project.  Run the webserver to test by running the following command in the terminal or command prompt.
+    ```shell
+    $ flask run
+    ```
 
+## Expected Deliverable
+
+The expected output can be found in this video below.
+
+[Mini Project 3 Expected Output](https://youtu.be/vK2jgxotA8g)
+
+## References
+
+- [MongoDB Atlas Getting Started](https://docs.atlas.mongodb.com/getting-started)
+- [PyMongoDB documnetation](https://pymongo.readthedocs.io/)

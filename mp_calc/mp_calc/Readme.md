@@ -66,7 +66,7 @@ $ git clone https://github.com/kurniawano/d2w_mini_projects.git
 Once you have downloaded the repository, you can go to the repository and to the folder called `mp_calc` for this mini project.
 
 ```shell
-$ cd d2w_mini_projects/mp_calc
+$ cd fip_powerx_mini_projects/mp_calc
 $ ls
 ```
 
@@ -91,12 +91,12 @@ In the following steps, the Windows prompt will be represented by:
 ```
 Go to the root folder `mp_calc`.
 ```shell
-> cd %USERPROFILE%\Downloads\d2w_mini_projects\mp_calc
+> cd %USERPROFILE%\fip_powerx_mini_projects\mp_calc
 ```
 From the root folder, i.e. `mp_calc`, create virtual environment called `virtenv`.
 
 ```shell
-> python -m venv virtenv
+$ python -m venv virtenv
 ```
 
 A folder called `virtenv` will be created. Now, activate the virtual environment.
@@ -124,7 +124,7 @@ $
 
 Go to the root folder `mp_calc`. 
 ```shell
-$ cd ~/Downloads/d2w_mini_projects/mp_calc
+$ cd ~/fip_powerx_mini_projects/mp_calc
 ```
 
 From the root folder, i.e. `mp_calc`, create virtual environment called `virtenv`.
@@ -156,12 +156,12 @@ Install the necessary packages for this mini project. From the root folder, i.e.
 
 For Windows:
 ```shell
-> python -m pip install -U --force-reinstall -r requirements.txt
+> pip install -U --force-reinstall -r requirements.txt
 ```
 
 For MacOS/Linux: (For Linux, you might need to type pip3 instead)
 ```shell
-$ python -m pip install -U --force-reinstall -r requirements.txt
+$ pip install -U --force-reinstall -r requirements.txt
 ```
 
 The above steps will install the following packages:
@@ -258,7 +258,7 @@ def users():
 - `users = User.query.all()` retrieves all users from the database in `User` table (`User` is defined in `models.py`). 
 - `mergesort(users, lambda item: item.username)` calls the sorting function to sort the list of users using its `username` attribute. Note that the `User` table has other attributes besides `username`. Refer to `models.py` for all the attributes of `User` table. It should sort the `users` in place. You need to modify your `mergesort()` function as described in **Q1** of `mp2_exercises.ipynb` to complete this. 
 - `usernames = [u.username for u in users]` creates a list of usernames from the list of sorted users. 
-- In the last line, `render_template('users.html', title='Users', users=usernames)`, we pass the variable `usernames` to be used in the `users.html` using some jinja templating under the name `users`.
+- In the last line, `render_template('users.html', title='Users', users=usernames)`, we pass the variable `username` to be used in the `users.html` using some jinja templating under the name `users`.
 
 
 This file `users.html` can be found inside the `templates` folder.
@@ -299,7 +299,7 @@ Let's open `users.html`. The first few lines are shown here.
 <h1>This Platform's Users</h1>
 ```
 
-- The first line `{% extends "base.html" %}` inherits the `base.html` for some of the common elements such as the navigation bar, importing certain scripts, and CSS files. The javascript which we will translate from the file `serverlibrary.py` is imported in the last few lines of `base.html`.
+- The first line `{% extends "base.html" %}` inherits the `base.html` for some of the common elements such as the navigation bar, importing certain scripts, and CSS files. The javascript which we will transalte from the file `serverlibrary.py` is imported in the last few lines of `base.html`.
 - The second line indicates the block `app_content`. Each html file templates we have will modify this block `app_content`. 
 
 This file basically iterates over all users and create rows of users in a table. The table body code is shown below.
@@ -331,8 +331,6 @@ This web application makes use of some client javascript library which is transl
 
 Follow the steps below.
 
-Follow the steps below.
-
 #### Linux/MacOs
 
 First, make sure that you have done the following:
@@ -341,7 +339,7 @@ First, make sure that you have done the following:
 
 Go to your root folder.
 ```shell
-$ cd ~/d2w_mini_projects/mp_calc
+$ cd ~/fip_powerx_mini_projects/mp_calc
 ```
 
 Now, we can go to the location of `clientlibrary.py` under `app/static/`.
@@ -353,7 +351,7 @@ $ cd app/static
 Type the following:
 
 ```shell
-$ python -m transcrypt -b -n clientlibrary
+$ python -m transcrypt -b clientlibrary.py
 ```
 
 Make sure you see the the `__target__` folder created successfully. You can check by typing:
@@ -369,7 +367,7 @@ $ cd ../..
 ```
 which means go up the folder two times. Or, simply
 ```shell
-$ cd ~/d2w_mini_projects/mp_calc/
+$ cd ~/fip_powerx_mini_projects/mp_calc/
 ```
 
 You should see `application.py` in this root folder. Run the following commands:
@@ -424,7 +422,7 @@ To stop the web app type `CTRL+C`.
 
 ##### Local Computer
 
-If you are using your own computer, make sure to change the flag `voc=False` in the following line inside `mp_calc/app/__init__.py`.
+If you are using your own computer, make sure to change the flag `voc=False` in the following line inside `mp_sort/app/__init__.py`.
 
 ```python
 # set voc=False if you run on local computer
@@ -457,7 +455,7 @@ First, make sure that you have done the following:
 
 Go to your root folder.
 ```dos
-> cd %USERPROFILE\d2w_mini_projects\mp_calc
+> cd %USERPROFILE\fip_powerx_mini_projects\mp_calc
 ```
 
 Now, we can go to the location of `clientlibrary.py` under `app/static/`.
@@ -469,7 +467,7 @@ Now, we can go to the location of `clientlibrary.py` under `app/static/`.
 Type the following:
 
 ```dos
-> python -m transcrypt -b -n clientlibrary
+> python -m transcrypt -b clientlibrary.py
 ```
 
 Make sure you see the the `__target__` folder created successfully. You can check by typing:
@@ -487,7 +485,7 @@ Now you are ready to create your database in your local computer. To do so, you 
 which means go up the folder two times. Or, simply
 
 ```dos
-> cd %USERPROFILE\d2w_mini_projects\mp_calc
+> cd %USERPROFILE\fip_powerx_mini_projects\mp_calc
 ```
 
 You should see `application.py` in this root folder. Run the following commands:
@@ -570,7 +568,7 @@ Read the following notes to understand how to use the database and Bootstrap for
 
 The expected output for both exercises 1 and 2 can be found in this video.
 
-[Mini Project 2 Expected Output](https://web.microsoftstream.com/video/1392234b-aa8a-412d-92c7-e2cf2b803175)
+[Mini Project 2 Expected Output](https://youtu.be/Rzy0nT9hMI8)
 
 ## Optional: Deploying to Amazon Elastic Beanstalk
 
@@ -581,7 +579,7 @@ Check [Deploying to Amazon Elastic Beanstalk](../mp_sort/DeployEB.md).
 1. I got, `ModuleNotFoundError: No module named 'flask_bootstrap'?` 
 
    Make sure you have activated your Python's virtual environment. For example, if your virtual environment name is `virtenv` you can do the following:
-   - Go to the folder or directory of your root project, e.g. `cd %USERPROFILE\Downloads\d2w_mini_projects\mp_calc` (Win), or `cd ~/Downloads/d2w_mini_projects/mp_calc` (Mac OS)
+   - Go to the folder or directory of your root project, e.g. `cd %USERPROFILE\fip_powerx_mini_projects\mp_calc` (Win), or `cd ~/fip_powerx_mini_projects/mp_calc` (Mac OS)
    - Actiate the virtual environment, e.g. `virtenv\Scripts\activate` (Win), or `source virtenv/bin/activate` (Mac OS).
 
 1. I can't run flask/use transcrypt?

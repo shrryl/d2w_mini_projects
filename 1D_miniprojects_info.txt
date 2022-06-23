@@ -1,0 +1,29 @@
+8/10/2021 Mini Proj 1
+Windows
+Unbuntu easier, commands exist
+
+Using a terminal:
+cd - change directory. cd .. goes up 1 folder
+pwd, ls, dir in Unix
+
+green - a function
+e.g.
+transcrypt (a programme in your computer) - needs an argument
+translates to JavaScript, creates a file in .js
+ONLY DO ONCE, it already created a taget library in your static folder, will continue to 'translate' whatever you have edited in your python library
+
+Web browsers understand JS not Python.
+
+Using virtenv, install everything there if you dont want it in your com. (clutter computer)
+
+What is Flask doing?
+- browser is a web client, requests in this address (url): the page you want
+- flask sends the html file you want in this format. html is only a way to render things out (you can open it in your browser as well)
+- when you click on the url, flask server sends a different html file to show you. 
+routes.py - shows you which links/paths to go to. (protocol - client can request and send things to server)
+- flask server sends html to your browser, browser requests for what the file wants, to library.js.
+- even if flask is closed, tab can still run the code, since the script that is running is already there.
+client side computation. the browser does the work. static side. server has already sent all the code that the browser needs to do.
+
+...?
+* client requests (by clicking on things, interacting on a web browser), browse requests from the server. *

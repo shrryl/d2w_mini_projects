@@ -24,8 +24,6 @@ players = {}
 # Put any other helper functions you use here
 #############################################
 
-def other_mark(mark):
-    return 'X' if mark == 'O' else 'O'
 
 def calculate_score(winning, draw):
     return winning * 10 + draw * 5
@@ -77,7 +75,6 @@ def process_winning(winner=None, status='lose'):
 ########
 # Task 1
 ########
-
 @socketio.on('startconnect', namespace='/tictactoe')
 def handle_connect(message):
     print("Connected")
@@ -96,28 +93,33 @@ def handle_connect(message):
                                            last_data.mark)
     emit('afterconnect', {'data': last_data.cell})   
 
+##########
+# Task 2
+##########
 @socketio.on('clicked', namespace='/tictactoe')
 def handle_click(message):
     # get the user name, mark and the clicked cell from message
     # check clientlibrary.py for the message sent in 
     # event 'clicked'
-    user = message['Username']
-    mark = message['mark']
+    # replace the None
+    user = message[None]
+    mark = message[None]
     
     # set the computer mark to be the opposite of that of player
-    computer = other_mark(mark)
+    computer = None
     
     # get the cell number from 'id' inside message
     # Note that the format for the cell string is 'cellXY'
     # extract only the last two characters
-    cell = message['id'][-2:]
+    cell = None
     
     # update TicTacToe's object using the mark at the approriate row and col
-    players[user].update(int(cell[0]), int(cell[1]), mark)
+    # replace the None
+    players[user].update(None, None, None)
     
     # check if there is any winner
     # you can call checkwinning method inside TicTacToe's object
-    winner = players[user].checkwinning()
+    winner = None
     
     # if there is a winner
     if winner != None:
@@ -129,32 +131,33 @@ def handle_click(message):
 
     # if there is no winner, check if there is any move lefts
     # get the boolean value by calling a method inside TicTacToe
-    can_move = players[user].any_moves_left()
+    can_move = None
     # if the computer can make a move
     if can_move:
         # find the best move for the computer
         next_move = players[user].find_best_move(computer)
         
         # update the board with the best move
-        players[user].update(next_move.row, next_move.col, computer)
+        # replace the None
+        players[user].update(None, None, None)
         
         # check if there is a winner
         # call a method inside TicTacToe
-        winner = players[user].checkwinning()
+        winner = None
         
         # emit signal 'computer_move' to update the page
         emit('computer_move', {'data': {'row':next_move.row, 'col':next_move.col}})
         
         # insert a new document to db on the board's status
         # create an object instance of State. Replace the None.
-        data = State(user_id=current_user.id,
+        data = State(user_id=None,
                      time=datetime.now(),
-                     cell=players[user].board_to_str,
-                     mark=mark)
+                     cell=None,
+                     mark=None)
         # write the code to add the data to the session
-	    db.session.add(data)
+	pass
         # write the code to commit the session to the database
-	    db.session.commit()
+	pass
 
         # check if there is a winner
         if winner != None:
@@ -179,6 +182,9 @@ def handle_click(message):
 # Exercise 5
 ####################
 
+#########
+# Task 3
+#########
 @application.route('/single', methods=['GET', 'POST'])
 @login_required
 def single():
@@ -189,22 +195,25 @@ def single():
         players[user].reset()
         
         # get the mark for the current player
-        player_mark = players[user].mark
+        # replace None
+        player_mark = None
         
         # get the mark for the computer player
-        computer_mark = other_mark(player_mark)
+        # replace None with your code
+        computer_mark = None
         
         # update database
         # the 'cell' should be the state of the board
         #  which can be obtained from the tictactoe object
-        data = State(user_id=current_user.id,
+        # replace None
+        data = State(user_id=None,
                      time=datetime.now(),
-                     cell=players[user].board_to_str,
-                     mark=player_mark)
+                     cell=None,
+                     mark=None)
         # add the data to the session
-	    db.session.add(data)
+	pass
         # commit the session to the database
-	    db.session.commit()
+	pass
         return render_template('single.html', title='Single Player', player=player_mark, computer=computer_mark)
     else:
         if user not in players:
@@ -216,14 +225,16 @@ def single():
             players[user] = TicTacToe(mark=player_mark)
 
             # set the computer mark
-            computer_mark = other_mark(player_mark)
+            # replace None with your code
+            computer_mark = None
         else:
             # if user is already in the dictionary, use the mark there
             # the TicTacToe object is stored inside players[user] variable
             player_mark = players[user].mark
             
             # set the computer mark
-            computer_mark = other_mark(player_mark)
+            # replace None with your code
+            computer_mark = None
         return render_template('single.html', title='Single Player', player=player_mark, computer=computer_mark)
 
 
